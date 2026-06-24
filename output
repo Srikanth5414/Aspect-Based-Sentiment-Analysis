@@ -1,1 +1,125 @@
+ All dependencies installed successfully!
+Using device: cuda
+Focal Loss defined
+Loading data...
+Train shape: (1204, 3)
+
+Train columns:
+['Sentence', 'AspectTerm', 'Polarity']
+
+First few rows of train:
+                                            Sentence             AspectTerm  \
+0  However, go for the ambience, and consider the...                   food   
+1  Great wine selection, Gigondas is worth the pr...               Gigondas   
+2  We are very particular about sushi and were bo...  ceviche mix (special)   
+
+   Polarity  
+0   neutral  
+1  positive  
+2  positive  
+
+Label distribution in train data:
+label
+0    912
+1    256
+2     36
+Name: count, dtype: int64
+
+Label mapping: 0=Positive, 1=Negative, 2=Neutral
+
+✓ Train shape: (963, 4)
+✓ Test shape: (241, 4)
+⚠ Augmentation not available: No module named 'nlpaug'
+
+✓ Preprocessing functions defined
+Augmentation skipped (nlpaug not available)
+
+Processing train...
+100% 963/963 [00:07<00:00, 152.22it/s]
+Processing test...
+100% 241/241 [00:01<00:00, 157.58it/s]
+✓ Train processed: (963, 5)
+✓ Test processed: (241, 5)
+
+Label distribution after augmentation:
+label
+0    729
+1    205
+2     29
+Name: count, dtype: int64
+
+✓ Train: 818, Val: 145, Test: 241
+✓ BART-enhanced model defined successfully
+
+Loading tokenizer and model: facebook/bart-base
+Loading weights: 100% 259/259 [00:00<00:00, 3924.04it/s]Using BART hidden size=768, attention heads=12
+✓ Total parameters: 146,512,134
+
+======================================================================
+✓✓✓ FULL FIXED BART-BASED ABSA PIPELINE READY FOR TRAINING! ✓✓✓
+======================================================================
+Train batches: 52
+Val batches: 10
+Test batches: 16
+Device: cuda
+======================================================================
+✓ Output directory ready: /mnt/user-data/outputs
+
+Starting training...
+======================================================================
+
+Epoch 1/3
+----------------------------------------------------------------------
+Training: 100% 52/52 [00:19<00:00,  2.59it/s, loss=0.139]Validating: 100% 10/10 [00:01<00:00,  7.15it/s]Train Loss: 0.7898 | Train Acc: 0.6333 | Train F1: 0.6146
+Val Acc: 0.7586 | Val F1: 0.6545
+✓ Best model saved!
+
+Epoch 2/3
+----------------------------------------------------------------------
+Training: 100% 52/52 [00:18<00:00,  2.65it/s, loss=0.0175]Validating: 100% 10/10 [00:01<00:00,  7.23it/s]Train Loss: 0.4742 | Train Acc: 0.8227 | Train F1: 0.7935
+Val Acc: 0.8552 | Val F1: 0.8395
+✓ Best model saved!
+
+Epoch 3/3
+----------------------------------------------------------------------
+Training: 100% 52/52 [00:18<00:00,  2.66it/s, loss=0.0319]Validating: 100% 10/10 [00:01<00:00,  7.29it/s]Train Loss: 0.3481 | Train Acc: 0.8692 | Train F1: 0.8563
+Val Acc: 0.8621 | Val F1: 0.8501
+✓ Best model saved!
+
+======================================================================
+Training completed!
+======================================================================
+
+Evaluating on Test Set...
+======================================================================
+Validating: 100% 16/16 [00:01<00:00,  8.13it/s]
+Test Results:
+Accuracy: 0.8838
+F1-Score (Weighted): 0.8698
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Positive       0.92      0.96      0.94       183
+    Negative       0.76      0.75      0.75        51
+     Neutral       0.00      0.00      0.00         7
+
+    accuracy                           0.88       241
+   macro avg       0.56      0.57      0.56       241
+weighted avg       0.86      0.88      0.87       241
+
+
+Confusion Matrix:
+[[175   8   0]
+ [ 13  38   0]
+ [  3   4   0]]
+
+✓ Results plot saved to training_results.png
+
+======================================================================
+✓✓✓ PIPELINE COMPLETE! ✓✓✓
+======================================================================
+Model saved: /mnt/user-data/outputs/best_model.pt
+Results plot: /mnt/user-data/outputs/training_results.png
+======================================================================
 
